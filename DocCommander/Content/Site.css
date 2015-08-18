@@ -1,0 +1,24 @@
+﻿.footer-fixed-bottom {
+    position: fixed;
+    bottom:0;
+    border-width: 1px 0 0;
+    right: 0;
+    left: 0;
+    text-align:center;
+    background:#222;
+    color:#ff6a00;
+    padding:15px;
+}
+
+#main-content{
+    margin-top:60px;
+}
+
+
+#modal-body{
+    padding:10px;
+}
+
+#modal-body h1{
+    background-color:#999;
+}

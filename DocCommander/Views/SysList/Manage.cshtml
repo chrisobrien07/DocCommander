@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DocCommander.Data.SysList>
+
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>Manage Lists</h2>
+<div class="row">
+    <div class="col-md-6" id="sys-lists">
+        @Html.Action("GetLists","SysList")
+    </div>
+    
+    <div class="col-md-6" id="sys-list-items">
+        
+    </div>
+
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content"  id="modal-form">
+      
+      
+    </div>
+  </div>
+</div>
+
+@section CSS{
+    <style>
+        #sys-list-items{
+            
+        }
+
+        #sys-list-items,
+        #sys-lists {
+                       
+        }
+
+
+            #sys-lists ul,
+            #sys-list-items ul{
+                padding:0px;
+                height:600px;
+            }
+
+        #sys-lists ul li,
+        #sys-list-items ul li{
+            list-style:inside none;
+        }
+
+        div.fix-bottom {
+            bottom:0;
+        }
+
+    </style>
+}
+
+@section scripts{
+    <script type="text/javascript">
+        function HideForm() {
+            $('#myModal').modal('hide');
+        }
+    </script>
+}

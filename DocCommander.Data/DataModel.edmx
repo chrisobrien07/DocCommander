@@ -1,0 +1,576 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DocCommanderModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DocCommanderModelStoreContainer">
+          <EntitySet Name="AccessLevel" EntityType="DocCommanderModel.Store.AccessLevel" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Account" EntityType="DocCommanderModel.Store.Account" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AppEvent" EntityType="DocCommanderModel.Store.AppEvent" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Num" EntityType="DocCommanderModel.Store.Num" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="NumConfig" EntityType="DocCommanderModel.Store.NumConfig" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SysList" EntityType="DocCommanderModel.Store.SysList" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SysListItem" EntityType="DocCommanderModel.Store.SysListItem" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_Membership" EntityType="DocCommanderModel.Store.webpages_Membership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="DocCommanderModel.Store.webpages_OAuthMembership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_Roles" EntityType="DocCommanderModel.Store.webpages_Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_UsersInRoles" EntityType="DocCommanderModel.Store.webpages_UsersInRoles" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_AppEvent_Account" Association="DocCommanderModel.Store.FK_AppEvent_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="AppEvent" EntitySet="AppEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Num_NumConfig" Association="DocCommanderModel.Store.FK_Num_NumConfig">
+            <End Role="NumConfig" EntitySet="NumConfig" />
+            <End Role="Num" EntitySet="Num" />
+          </AssociationSet>
+          <AssociationSet Name="fk_RoleId" Association="DocCommanderModel.Store.fk_RoleId">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SysListItem_SysList" Association="DocCommanderModel.Store.FK_SysListItem_SysList">
+            <End Role="SysList" EntitySet="SysList" />
+            <End Role="SysListItem" EntitySet="SysListItem" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UserId" Association="DocCommanderModel.Store.fk_UserId">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AccessLevel">
+          <Key>
+            <PropertyRef Name="AccessLevelId" />
+          </Key>
+          <Property Name="AccessLevelId" Type="int" Nullable="false" />
+          <Property Name="ControllerName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ActionName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MinAccessLevel" Type="int" />
+        </EntityType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
+          <Property Name="IsEnabled" Type="bit" Nullable="false" />
+          <Property Name="NumBadLogins" Type="int" Nullable="false" />
+          <Property Name="IsLDAPAccount" Type="bit" Nullable="false" />
+          <Property Name="AccessLevel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AppEvent">
+          <Key>
+            <PropertyRef Name="AppEventId" />
+          </Key>
+          <Property Name="AppEventId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="EventDate" Type="datetime" Nullable="false" />
+          <Property Name="IsError" Type="bit" Nullable="false" />
+          <Property Name="ActionType" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="TableName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="RecordId" Type="bigint" Nullable="false" />
+          <Property Name="OldRecordVersion" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="NewRecordVersion" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="ColumnName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="OldValue" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NewValue" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsUserVerifiedEvent" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Num">
+          <Key>
+            <PropertyRef Name="NumId" />
+          </Key>
+          <Property Name="NumId" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ConfigId" Type="int" Nullable="false" />
+          <Property Name="List1ShortValue" Type="nvarchar" Nullable="false" MaxLength="4" />
+          <Property Name="Lis2ShortValue" Type="nvarchar" MaxLength="4" />
+          <Property Name="List3ShortValue" Type="nvarchar" MaxLength="4" />
+          <Property Name="List4ShortValue" Type="nvarchar" MaxLength="4" />
+          <Property Name="List5ShortValue" Type="nvarchar" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="NumConfig">
+          <Key>
+            <PropertyRef Name="NumConfigId" />
+          </Key>
+          <Property Name="NumConfigId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Part1List" Type="int" Nullable="false" />
+          <Property Name="Part2List" Type="int" />
+          <Property Name="Part3List" Type="int" />
+          <Property Name="Part4List" Type="int" />
+          <Property Name="Part5List" Type="int" />
+        </EntityType>
+        <EntityType Name="SysList">
+          <Key>
+            <PropertyRef Name="SysListId" />
+          </Key>
+          <Property Name="SysListId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysListItem">
+          <Key>
+            <PropertyRef Name="SysListItemId" />
+          </Key>
+          <Property Name="SysListItemId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SysListId" Type="int" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ShortCode" Type="nvarchar" Nullable="false" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsConfirmed" Type="bit" />
+          <Property Name="LastPasswordFailureDate" Type="datetime" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordChangedDate" Type="datetime" />
+          <Property Name="PasswordSalt" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="Provider" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="ProviderUserId" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="webpages_UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AppEvent_Account">
+          <End Role="Account" Type="DocCommanderModel.Store.Account" Multiplicity="1" />
+          <End Role="AppEvent" Type="DocCommanderModel.Store.AppEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="AppEvent">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Num_NumConfig">
+          <End Role="NumConfig" Type="DocCommanderModel.Store.NumConfig" Multiplicity="1" />
+          <End Role="Num" Type="DocCommanderModel.Store.Num" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NumConfig">
+              <PropertyRef Name="NumConfigId" />
+            </Principal>
+            <Dependent Role="Num">
+              <PropertyRef Name="ConfigId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_RoleId">
+          <End Role="webpages_Roles" Type="DocCommanderModel.Store.webpages_Roles" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="DocCommanderModel.Store.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SysListItem_SysList">
+          <End Role="SysList" Type="DocCommanderModel.Store.SysList" Multiplicity="1" />
+          <End Role="SysListItem" Type="DocCommanderModel.Store.SysListItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SysList">
+              <PropertyRef Name="SysListId" />
+            </Principal>
+            <Dependent Role="SysListItem">
+              <PropertyRef Name="SysListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UserId">
+          <End Role="Account" Type="DocCommanderModel.Store.Account" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="DocCommanderModel.Store.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DocCommanderModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DocCommanderEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="AccessLevels" EntityType="DocCommanderModel.AccessLevel" />
+          <EntitySet Name="Accounts" EntityType="DocCommanderModel.Account" />
+          <EntitySet Name="webpages_Membership" EntityType="DocCommanderModel.webpages_Membership" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="DocCommanderModel.webpages_OAuthMembership" />
+          <EntitySet Name="webpages_Roles" EntityType="DocCommanderModel.webpages_Roles" />
+          <AssociationSet Name="webpages_UsersInRoles" Association="DocCommanderModel.webpages_UsersInRoles">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <EntitySet Name="SysLists" EntityType="DocCommanderModel.SysList" />
+          <EntitySet Name="SysListItems" EntityType="DocCommanderModel.SysListItem" />
+          <AssociationSet Name="FK_SysListItem_SysList" Association="DocCommanderModel.FK_SysListItem_SysList">
+            <End Role="SysList" EntitySet="SysLists" />
+            <End Role="SysListItem" EntitySet="SysListItems" />
+          </AssociationSet>
+          <EntitySet Name="AppEvents" EntityType="DocCommanderModel.AppEvent" />
+          <EntitySet Name="NumConfigs" EntityType="DocCommanderModel.NumConfig" />
+          <AssociationSet Name="FK_AppEvent_Account" Association="DocCommanderModel.FK_AppEvent_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="AppEvent" EntitySet="AppEvents" />
+          </AssociationSet>
+          <EntitySet Name="Nums" EntityType="DocCommanderModel.Num" />
+          <AssociationSet Name="FK_Num_NumConfig" Association="DocCommanderModel.FK_Num_NumConfig">
+            <End Role="NumConfig" EntitySet="NumConfigs" />
+            <End Role="Num" EntitySet="Nums" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AccessLevel">
+          <Key>
+            <PropertyRef Name="AccessLevelId" />
+          </Key>
+          <Property Name="AccessLevelId" Type="Int32" Nullable="false" />
+          <Property Name="ControllerName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ActionName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MinAccessLevel" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="NumBadLogins" Type="Int32" Nullable="false" />
+          <Property Name="IsLDAPAccount" Type="Boolean" Nullable="false" />
+          <Property Name="AccessLevel" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="webpages_Roles" Relationship="DocCommanderModel.webpages_UsersInRoles" FromRole="Account" ToRole="webpages_Roles" />
+          <NavigationProperty Name="AppEvents" Relationship="DocCommanderModel.FK_AppEvent_Account" FromRole="Account" ToRole="AppEvent" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="ConfirmationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="IsConfirmed" Type="Boolean" />
+          <Property Name="LastPasswordFailureDate" Type="DateTime" Precision="3" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordChangedDate" Type="DateTime" Precision="3" />
+          <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordVerificationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="Provider" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="ProviderUserId" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Accounts" Relationship="DocCommanderModel.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="Account" />
+        </EntityType>
+        <Association Name="webpages_UsersInRoles">
+          <End Role="webpages_Roles" Type="DocCommanderModel.webpages_Roles" Multiplicity="*" />
+          <End Role="Account" Type="DocCommanderModel.Account" Multiplicity="*" />
+        </Association>
+        <EntityType Name="SysList">
+          <Key>
+            <PropertyRef Name="SysListId" />
+          </Key>
+          <Property Type="Int32" Name="SysListId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <NavigationProperty Name="SysListItems" Relationship="DocCommanderModel.FK_SysListItem_SysList" FromRole="SysList" ToRole="SysListItem" />
+        </EntityType>
+        <EntityType Name="SysListItem">
+          <Key>
+            <PropertyRef Name="SysListItemId" />
+          </Key>
+          <Property Type="Int32" Name="SysListItemId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SysListId" Nullable="false" />
+          <Property Type="String" Name="Value" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShortCode" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SysList" Relationship="DocCommanderModel.FK_SysListItem_SysList" FromRole="SysListItem" ToRole="SysList" />
+        </EntityType>
+        <Association Name="FK_SysListItem_SysList">
+          <End Type="DocCommanderModel.SysList" Role="SysList" Multiplicity="1" />
+          <End Type="DocCommanderModel.SysListItem" Role="SysListItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SysList">
+              <PropertyRef Name="SysListId" />
+            </Principal>
+            <Dependent Role="SysListItem">
+              <PropertyRef Name="SysListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AppEvent">
+          <Key>
+            <PropertyRef Name="AppEventId" />
+          </Key>
+          <Property Type="Int64" Name="AppEventId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="DateTime" Name="EventDate" Nullable="false" Precision="3" />
+          <Property Type="Boolean" Name="IsError" Nullable="false" />
+          <Property Type="String" Name="ActionType" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TableName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="RecordId" Nullable="false" />
+          <Property Type="String" Name="ColumnName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OldValue" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NewValue" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsUserVerifiedEvent" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="DocCommanderModel.FK_AppEvent_Account" FromRole="AppEvent" ToRole="Account" />
+          <Property Type="String" Name="OldRecordVersion" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NewRecordVersion" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="NumConfig">
+          <Key>
+            <PropertyRef Name="NumConfigId" />
+          </Key>
+          <Property Type="Int32" Name="NumConfigId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Part1List" Nullable="false" />
+          <Property Type="Int32" Name="Part2List" />
+          <Property Type="Int32" Name="Part3List" />
+          <Property Type="Int32" Name="Part4List" />
+          <Property Type="Int32" Name="Part5List" />
+          <NavigationProperty Name="Nums" Relationship="DocCommanderModel.FK_Num_NumConfig" FromRole="NumConfig" ToRole="Num" />
+        </EntityType>
+        <Association Name="FK_AppEvent_Account">
+          <End Type="DocCommanderModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="DocCommanderModel.AppEvent" Role="AppEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="AppEvent">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Num">
+          <Key>
+            <PropertyRef Name="NumId" />
+          </Key>
+          <Property Type="String" Name="NumId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ConfigId" Nullable="false" />
+          <Property Type="String" Name="List1ShortValue" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Lis2ShortValue" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="List3ShortValue" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="List4ShortValue" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="List5ShortValue" MaxLength="4" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NumConfig" Relationship="DocCommanderModel.FK_Num_NumConfig" FromRole="Num" ToRole="NumConfig" />
+        </EntityType>
+        <Association Name="FK_Num_NumConfig">
+          <End Type="DocCommanderModel.NumConfig" Role="NumConfig" Multiplicity="1" />
+          <End Type="DocCommanderModel.Num" Role="Num" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NumConfig">
+              <PropertyRef Name="NumConfigId" />
+            </Principal>
+            <Dependent Role="Num">
+              <PropertyRef Name="ConfigId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DocCommanderModelStoreContainer" CdmEntityContainer="DocCommanderEntities">
+          <EntitySetMapping Name="AccessLevels">
+            <EntityTypeMapping TypeName="DocCommanderModel.AccessLevel">
+              <MappingFragment StoreEntitySet="AccessLevel">
+                <ScalarProperty Name="AccessLevelId" ColumnName="AccessLevelId" />
+                <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+                <ScalarProperty Name="MinAccessLevel" ColumnName="MinAccessLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="DocCommanderModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="NumBadLogins" ColumnName="NumBadLogins" />
+                <ScalarProperty Name="IsLDAPAccount" ColumnName="IsLDAPAccount" />
+                <ScalarProperty Name="AccessLevel" ColumnName="AccessLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Membership">
+            <EntityTypeMapping TypeName="DocCommanderModel.webpages_Membership">
+              <MappingFragment StoreEntitySet="webpages_Membership">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+                <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
+                <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
+                <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_OAuthMembership">
+            <EntityTypeMapping TypeName="DocCommanderModel.webpages_OAuthMembership">
+              <MappingFragment StoreEntitySet="webpages_OAuthMembership">
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Roles">
+            <EntityTypeMapping TypeName="DocCommanderModel.webpages_Roles">
+              <MappingFragment StoreEntitySet="webpages_Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="webpages_UsersInRoles" TypeName="DocCommanderModel.webpages_UsersInRoles" StoreEntitySet="webpages_UsersInRoles">
+            <EndProperty Name="webpages_Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="Account">
+              <ScalarProperty Name="AccountId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="SysLists">
+            <EntityTypeMapping TypeName="DocCommanderModel.SysList">
+              <MappingFragment StoreEntitySet="SysList">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SysListId" ColumnName="SysListId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysListItems">
+            <EntityTypeMapping TypeName="DocCommanderModel.SysListItem">
+              <MappingFragment StoreEntitySet="SysListItem">
+                <ScalarProperty Name="ShortCode" ColumnName="ShortCode" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="SysListId" ColumnName="SysListId" />
+                <ScalarProperty Name="SysListItemId" ColumnName="SysListItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppEvents">
+            <EntityTypeMapping TypeName="DocCommanderModel.AppEvent">
+              <MappingFragment StoreEntitySet="AppEvent">
+                <ScalarProperty Name="NewRecordVersion" ColumnName="NewRecordVersion" />
+                <ScalarProperty Name="OldRecordVersion" ColumnName="OldRecordVersion" />
+                <ScalarProperty Name="IsUserVerifiedEvent" ColumnName="IsUserVerifiedEvent" />
+                <ScalarProperty Name="NewValue" ColumnName="NewValue" />
+                <ScalarProperty Name="OldValue" ColumnName="OldValue" />
+                <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
+                <ScalarProperty Name="RecordId" ColumnName="RecordId" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+                <ScalarProperty Name="IsError" ColumnName="IsError" />
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AppEventId" ColumnName="AppEventId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NumConfigs">
+            <EntityTypeMapping TypeName="DocCommanderModel.NumConfig">
+              <MappingFragment StoreEntitySet="NumConfig">
+                <ScalarProperty Name="Part5List" ColumnName="Part5List" />
+                <ScalarProperty Name="Part4List" ColumnName="Part4List" />
+                <ScalarProperty Name="Part3List" ColumnName="Part3List" />
+                <ScalarProperty Name="Part2List" ColumnName="Part2List" />
+                <ScalarProperty Name="Part1List" ColumnName="Part1List" />
+                <ScalarProperty Name="NumConfigId" ColumnName="NumConfigId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nums">
+            <EntityTypeMapping TypeName="DocCommanderModel.Num">
+              <MappingFragment StoreEntitySet="Num">
+                <ScalarProperty Name="List5ShortValue" ColumnName="List5ShortValue" />
+                <ScalarProperty Name="List4ShortValue" ColumnName="List4ShortValue" />
+                <ScalarProperty Name="List3ShortValue" ColumnName="List3ShortValue" />
+                <ScalarProperty Name="Lis2ShortValue" ColumnName="Lis2ShortValue" />
+                <ScalarProperty Name="List1ShortValue" ColumnName="List1ShortValue" />
+                <ScalarProperty Name="ConfigId" ColumnName="ConfigId" />
+                <ScalarProperty Name="NumId" ColumnName="NumId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

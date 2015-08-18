@@ -114,6 +114,7 @@
       <HintPath>packages\System.Spatial.5.6.4\lib\net40\System.Spatial.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -191,6 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -224,6 +226,9 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\themes\default\bootstrap.css" />
+    <Content Include="Content\themes\default\bootstrap.min.css" />
+    <Content Include="Content\themes\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
@@ -300,7 +305,27 @@
     <Content Include="Content\bootstrap\bootstrap.less" />
     <Content Include="Content\bootstrap\badges.less" />
     <Content Include="Content\bootstrap\alerts.less" />
+    <Content Include="Content\themes\default\bootstrap.less" />
+    <Content Include="Content\themes\default\variables.less" />
+    <Content Include="Content\themes\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\themes\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\themes\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\themes\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Images\Thumbs.db" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
@@ -308,24 +333,80 @@
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-3.3.0.debug.js" />
     <Content Include="Scripts\knockout-3.3.0.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ADAuthController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AppEventController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SysListController.cs" />
+    <Compile Include="Controllers\SysListItemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mailers\IUserMailer.cs" />
+    <Compile Include="Mailers\UserMailer.cs" />
+    <Compile Include="ModelAttributes\MinimumAgeAttribute.cs" />
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ConfigSettingsModel.cs" />
+    <Compile Include="Models\MessageModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\UserMailer\ConfirmAccount.cshtml" />
+    <Content Include="Views\UserMailer\NotifyFailedLoginAttempt.cshtml" />
+    <Content Include="Views\UserMailer\PasswordChangeSuccess.cshtml" />
+    <Content Include="Views\UserMailer\PasswordResetRequest.cshtml" />
+    <Content Include="Views\UserMailer\_Layout.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Account\ConfirmationSuccess.cshtml" />
+    <Content Include="Views\Account\Dashboard.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\RegistrationSuccess.cshtml" />
+    <Content Include="Views\Account\RequestChangePassword.cshtml" />
+    <Content Include="Views\Account\RequestChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_NavBar.cshtml" />
+    <Content Include="Views\SysListItem\Create.cshtml" />
+    <Content Include="Views\SysListItem\Delete.cshtml" />
+    <Content Include="Views\SysListItem\Details.cshtml" />
+    <Content Include="Views\SysListItem\Edit.cshtml" />
+    <Content Include="Views\SysListItem\Index.cshtml" />
+    <Content Include="Views\SysList\Create.cshtml" />
+    <Content Include="Views\SysList\Delete.cshtml" />
+    <Content Include="Views\SysList\Details.cshtml" />
+    <Content Include="Views\SysList\Edit.cshtml" />
+    <Content Include="Views\SysList\Index.cshtml" />
+    <Content Include="Views\SysList\Manage.cshtml" />
+    <Content Include="Views\SysList\_SysListDisplayAll.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -335,8 +416,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\AppEvent\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DocCommander.Data\DocCommander.Data.csproj">
+      <Project>{2d5f22bc-c3b2-4f34-a18a-891196ceba85}</Project>
+      <Name>DocCommander.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="DocCommander.Logic\DocCommander.Logic.csproj">
+      <Project>{b2fa0ea8-dce1-4170-9d9b-3e143dc90d57}</Project>
+      <Name>DocCommander.Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

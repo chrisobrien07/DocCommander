@@ -1,0 +1,9 @@
+@model DocCommander.Models.EmailConfirmationModel
+<h2>Confirm Account</h2>
+
+<p>@Html.DisplayFor(x=>x.FirstName),</p>
+<p>Thanks for registering. You need to confirm your account before you can login.</p>
+<p>Click <a href="@Model.SiteUrl@Url.Action("ConfirmAccount","Account",new{u=Model.UserName,t=Model.ConfirmationToken})">Here</a> to confirm your account.</p>
+
+<p>Thanks,</p>
+<p>The Team.</p>

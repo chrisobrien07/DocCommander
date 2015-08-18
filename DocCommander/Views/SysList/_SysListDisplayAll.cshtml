@@ -1,0 +1,45 @@
+﻿@model IEnumerable<DocCommander.Data.SysList>
+
+<h3>Lists</h3>
+<div class="fix-bottom">
+    @Ajax.ActionLink("New List", "Create", "SysList", null, 
+        new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "modal-form", InsertionMode = InsertionMode.Replace }, 
+        new { data_toggle = "modal", data_target = "#myModal", @class="btn btn-primary" })
+</div>
+<ul>
+@foreach (var item in Model) {
+    
+        <li>
+            <div class="row">
+                <div class="col-sm-8">
+                    @Ajax.ActionLink(item.Name, "Index", "SysListItem", 
+                    new { sysListId = item.SysListId }, 
+                    new AjaxOptions() {
+                        HttpMethod="GET",
+                        UpdateTargetId="sys-list-items",                    
+                        InsertionMode=InsertionMode.Replace},                  
+                        null)
+                </div>
+                <div class="col-sm-2">
+                    @Ajax.ActionLink("Edit","Edit","SysList",
+                    new { id = item.SysListId }, 
+                    new AjaxOptions() {
+                        HttpMethod="GET",
+                        UpdateTargetId="modal-form",
+                        InsertionMode=InsertionMode.Replace}, 
+                        new { data_toggle = "modal", data_target = "#myModal" })                 
+                </div>
+                <div class="col-sm-2">
+                    @Ajax.ActionLink("Delete","Delete","SysList",
+                    new { id = item.SysListId }, 
+                    new AjaxOptions() {
+                        HttpMethod="GET",
+                        UpdateTargetId="modal-form",
+                        InsertionMode=InsertionMode.Replace}, 
+                        new { data_toggle = "modal", data_target = "#myModal" })                 
+                </div>
+            </div>
+        </li>
+    
+}
+</ul>
