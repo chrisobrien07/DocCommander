@@ -25,6 +25,7 @@ namespace DocCommander.Data
         public Nullable<int> Part3List { get; set; }
         public Nullable<int> Part4List { get; set; }
         public Nullable<int> Part5List { get; set; }
+        public string Name { get; set; }
     
         public virtual ICollection<Num> Nums { get; set; }
     }

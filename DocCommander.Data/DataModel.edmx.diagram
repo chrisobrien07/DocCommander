@@ -11,14 +11,14 @@
         <EntityTypeShape EntityType="DocCommanderModel.webpages_OAuthMembership" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DocCommanderModel.webpages_Roles" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
         <AssociationConnector Association="DocCommanderModel.webpages_UsersInRoles" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DocCommanderModel.SysList" Width="1.5" PointX="5.75" PointY="1" />
         <EntityTypeShape EntityType="DocCommanderModel.SysListItem" Width="1.5" PointX="8" PointY="1" />
-        <AssociationConnector Association="DocCommanderModel.FK_SysListItem_SysList" />
         <EntityTypeShape EntityType="DocCommanderModel.AppEvent" Width="1.5" PointX="5.625" PointY="6" />
         <EntityTypeShape EntityType="DocCommanderModel.NumConfig" Width="1.5" PointX="10.75" PointY="6.125" />
         <AssociationConnector Association="DocCommanderModel.FK_AppEvent_Account" />
         <EntityTypeShape EntityType="DocCommanderModel.Num" Width="1.5" PointX="8.25" PointY="6.125" />
         <AssociationConnector Association="DocCommanderModel.FK_Num_NumConfig" />
+        <EntityTypeShape EntityType="DocCommanderModel.SysList" Width="1.5" PointX="5.75" PointY="1" />
+        <AssociationConnector Association="DocCommanderModel.FK_SysListItem_SysList" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

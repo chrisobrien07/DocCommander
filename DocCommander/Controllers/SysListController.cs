@@ -20,18 +20,10 @@ namespace DocCommander.Controllers
 
         public ActionResult GetLists()
         {
-            return PartialView("_SysListDisplayAll", db.SysLists.ToList());
+            return PartialView("List", db.SysLists.ToList());
         }
 
-        public ActionResult GetItems(int sysListId)
-        {
-            return PartialView("_SysListItemsDisplay", db.SysListItems.Where(x => x.SysListId == sysListId).OrderBy(x => x.Value));
-        }
         
-
-        
-
-
         //
         // GET: /SysList/
 
@@ -99,7 +91,7 @@ namespace DocCommander.Controllers
             {
                 db.Entry(syslist).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("GetLists");
             }
             return PartialView(syslist);
         }

@@ -21,6 +21,7 @@ namespace DocCommander.Controllers
         {
             var syslistitems = db.SysListItems.Where(x=>x.SysListId==sysListId);
             ViewBag.SysListId = sysListId;
+            ViewBag.SysListName = db.SysLists.Find(sysListId).Name;
             return PartialView(syslistitems.ToList());
         }
 

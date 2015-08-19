@@ -15,10 +15,25 @@
 }
 
 
-#modal-body{
+/*#modal-body{
     padding:10px;
 }
 
 #modal-body h1{
     background-color:#999;
+}*/
+
+li.list-not-active{
+    background:#ffc0c0;
+    color:#f00;
+}
+
+#list-list,
+#list-items{
+    overflow-y:scroll;
+}
+
+#list-list li:hover,
+#list-items li:hover{
+    background:#b6ff00;
 }

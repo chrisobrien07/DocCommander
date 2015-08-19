@@ -33,25 +33,7 @@ namespace DocCommander.Controllers
         }
 
 
-        public ActionResult NewEvent()
-        {            
-            AppEvent event = new AppEvent(){
-                UserId = WebSecurity.CurrentUserId,
-                EventDate = DateTime.Now,
-                IsError
-                ActionType
-                TableName
-                RecordId
-                OldRecordVersion
-                NewRecordVersion
-                ColumnName
-                OldValue
-                NewValue
-                IsUserVerifiedEvent
-
-            }
-
-        }
+        
 
 
 	}

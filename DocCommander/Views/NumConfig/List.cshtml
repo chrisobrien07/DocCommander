@@ -1,0 +1,32 @@
+﻿@model IEnumerable<DocCommander.Data.NumConfig>
+
+<div class="panel panel-default">
+    <div class="panel-header">Manage Num Configurations</div>
+    <ul class="list-group">
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-md-2">
+                    @item.Name
+                </div>
+                <div class="col-md-2">
+                    @item.Part1List
+                </div>
+                <div class="col-md-2">
+                    @item.Part2List
+                </div>
+                <div class="col-md-2">
+                    @item.Part3List
+                </div>
+                <div class="col-md-2">
+                    @item.Part4List
+                </div>
+                <div class="col-md-2">
+                    @item.Part5List
+                </div>
+            </div>
+        </li>
+    }
+    </ul>
+</div>

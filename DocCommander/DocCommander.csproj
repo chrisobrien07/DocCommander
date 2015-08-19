@@ -356,6 +356,7 @@
     <Compile Include="Controllers\AppEventController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NumConfigController.cs" />
     <Compile Include="Controllers\SysListController.cs" />
     <Compile Include="Controllers\SysListItemController.cs" />
     <Compile Include="Global.asax.cs">
@@ -406,7 +407,9 @@
     <Content Include="Views\SysList\Edit.cshtml" />
     <Content Include="Views\SysList\Index.cshtml" />
     <Content Include="Views\SysList\Manage.cshtml" />
-    <Content Include="Views\SysList\_SysListDisplayAll.cshtml" />
+    <Content Include="Views\SysList\List.cshtml" />
+    <Content Include="Views\NumConfig\List.cshtml" />
+    <Content Include="Views\NumConfig\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

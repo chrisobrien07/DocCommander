@@ -30,10 +30,10 @@ namespace DocCommander.Data
         public DbSet<webpages_Membership> webpages_Membership { get; set; }
         public DbSet<webpages_OAuthMembership> webpages_OAuthMembership { get; set; }
         public DbSet<webpages_Roles> webpages_Roles { get; set; }
-        public DbSet<SysList> SysLists { get; set; }
         public DbSet<SysListItem> SysListItems { get; set; }
         public DbSet<AppEvent> AppEvents { get; set; }
         public DbSet<NumConfig> NumConfigs { get; set; }
         public DbSet<Num> Nums { get; set; }
+        public DbSet<SysList> SysLists { get; set; }
     }
 }

@@ -1,15 +1,17 @@
 ﻿@model IEnumerable<DocCommander.Data.SysList>
 
-<h3>Lists</h3>
-<div class="fix-bottom">
-    @Ajax.ActionLink("New List", "Create", "SysList", null, 
-        new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "modal-form", InsertionMode = InsertionMode.Replace }, 
-        new { data_toggle = "modal", data_target = "#myModal", @class="btn btn-primary" })
-</div>
-<ul>
-@foreach (var item in Model) {
-    
-        <li>
+
+<div class="panel panel-default">
+    <div class="panel-header">
+        <h3>Lists</h3>
+        
+    </div>
+    <ul class="list-group" id="list-list">        
+    @foreach (var item in Model)
+    {
+        var ItemStyle = (!item.IsActive) ? "list-not-active" : "";
+        
+        <li class="list-group-item @ItemStyle">
             <div class="row">
                 <div class="col-sm-8">
                     @Ajax.ActionLink(item.Name, "Index", "SysListItem", 
@@ -41,5 +43,9 @@
             </div>
         </li>
     
-}
-</ul>
+    }
+    </ul>
+</div>
+@Ajax.ActionLink("New List", "Create", "SysList", null, 
+        new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "modal-form", InsertionMode = InsertionMode.Replace }, 
+        new { data_toggle = "modal", data_target = "#myModal", @class="btn btn-primary" })
