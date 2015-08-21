@@ -5,20 +5,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="61f7026cab0040deb4450343c322ddaa" Name="Diagram1">
-        <EntityTypeShape EntityType="DocCommanderModel.AccessLevel" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DocCommanderModel.Account" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DocCommanderModel.webpages_Membership" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DocCommanderModel.webpages_OAuthMembership" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DocCommanderModel.webpages_Roles" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DocCommanderModel.AccessLevel" Width="1.5" PointX="7.625" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DocCommanderModel.Account" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DocCommanderModel.webpages_Membership" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DocCommanderModel.webpages_OAuthMembership" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DocCommanderModel.webpages_Roles" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
         <AssociationConnector Association="DocCommanderModel.webpages_UsersInRoles" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DocCommanderModel.SysListItem" Width="1.5" PointX="8" PointY="1" />
-        <EntityTypeShape EntityType="DocCommanderModel.AppEvent" Width="1.5" PointX="5.625" PointY="6" />
-        <EntityTypeShape EntityType="DocCommanderModel.NumConfig" Width="1.5" PointX="10.75" PointY="6.125" />
+        <EntityTypeShape EntityType="DocCommanderModel.SysListItem" Width="1.5" PointX="8" PointY="5.875" />
+        <EntityTypeShape EntityType="DocCommanderModel.AppEvent" Width="1.5" PointX="5.25" PointY="1" />
         <AssociationConnector Association="DocCommanderModel.FK_AppEvent_Account" />
-        <EntityTypeShape EntityType="DocCommanderModel.Num" Width="1.5" PointX="8.25" PointY="6.125" />
-        <AssociationConnector Association="DocCommanderModel.FK_Num_NumConfig" />
-        <EntityTypeShape EntityType="DocCommanderModel.SysList" Width="1.5" PointX="5.75" PointY="1" />
+        <EntityTypeShape EntityType="DocCommanderModel.Num" Width="1.5" PointX="3" PointY="6" />
+        <EntityTypeShape EntityType="DocCommanderModel.SysList" Width="1.5" PointX="5.75" PointY="6" />
         <AssociationConnector Association="DocCommanderModel.FK_SysListItem_SysList" />
+        <EntityTypeShape EntityType="DocCommanderModel.NumConfig" Width="1.5" PointX="0.75" PointY="6" />
+        <AssociationConnector Association="DocCommanderModel.FK_Num_NumConfig" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

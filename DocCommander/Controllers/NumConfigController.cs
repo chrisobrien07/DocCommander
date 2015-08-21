@@ -19,11 +19,14 @@ namespace DocCommander.Controllers
 
         public ActionResult GetList()
         {
-            return PartialView(db.NumConfigs.ToList());
+            return PartialView("List",db.NumConfigs.ToList());
         }
 
         public ActionResult Create()
         {
+            var res = db.SysLists.Where(x => x.IsActive == true).Select(x=>x.Name).ToList();
+            res.Insert(0,"EMPTY");
+            ViewBag.ListNames = new SelectList(res);
             return PartialView();
         }
 
@@ -35,15 +38,20 @@ namespace DocCommander.Controllers
             {
                 db.Entry(model).State = EntityState.Added;
                 db.SaveChanges();
-                return RedirectToAction("GetLists");
+                return RedirectToAction("GetList");
             }
-
+            var res = db.SysLists.Where(x => x.IsActive == true).Select(x => x.Name).ToList();
+            res.Insert(0, "EMPTY");
+            ViewBag.ListNames = new SelectList(db.SysLists.Where(x => x.IsActive == true).Select(x => x.Name).ToList());
             return PartialView(model);
         }
 
         public ActionResult Edit(int id)
         {
             NumConfig item = db.NumConfigs.Find(id);
+            var res = db.SysLists.Where(x => x.IsActive == true).Select(x => x.Name).ToList();
+            res.Insert(0, "EMPTY");
+            ViewBag.ListNames = new SelectList(res);
             return PartialView(item);
         }
 
@@ -55,9 +63,11 @@ namespace DocCommander.Controllers
             {
                 db.Entry(model).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("GetLists");
+                return RedirectToAction("GetList");
             }
-
+            var res = db.SysLists.Where(x => x.IsActive == true).Select(x => x.Name).ToList();
+            res.Insert(0, "EMPTY");
+            ViewBag.ListNames = new SelectList(res);
             return PartialView(model);
         }
 
@@ -78,7 +88,7 @@ namespace DocCommander.Controllers
             NumConfig item = db.NumConfigs.Find(id);
             db.NumConfigs.Remove(item);
             db.SaveChanges();
-            return RedirectToAction("GetLists");
+            return RedirectToAction("GetList");
         }
 
         protected override void Dispose(bool disposing)

@@ -20,12 +20,13 @@ namespace DocCommander.Data
         }
     
         public int NumConfigId { get; set; }
-        public int Part1List { get; set; }
-        public Nullable<int> Part2List { get; set; }
-        public Nullable<int> Part3List { get; set; }
-        public Nullable<int> Part4List { get; set; }
-        public Nullable<int> Part5List { get; set; }
         public string Name { get; set; }
+        public bool IsHierarchy { get; set; }
+        public string Part1ListName { get; set; }
+        public string Part2ListName { get; set; }
+        public string Part3ListName { get; set; }
+        public string Part4ListName { get; set; }
+        public string Part5ListName { get; set; }
     
         public virtual ICollection<Num> Nums { get; set; }
     }

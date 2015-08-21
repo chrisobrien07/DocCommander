@@ -410,6 +410,9 @@
     <Content Include="Views\SysList\List.cshtml" />
     <Content Include="Views\NumConfig\List.cshtml" />
     <Content Include="Views\NumConfig\Index.cshtml" />
+    <Content Include="Views\NumConfig\Create.cshtml" />
+    <Content Include="Views\NumConfig\Edit.cshtml" />
+    <Content Include="Views\NumConfig\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

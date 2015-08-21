@@ -35,5 +35,16 @@
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)
 
+        <script type="text/javascript">
+            function HideForm() {
+                $('#myModal').modal('hide');
+            }
+
+            function AjaxFailure(xhr, status, error) {
+                alert(xhr.responseText);
+            }
+
+        </script>
+
     </body>
 </html>

@@ -11,22 +11,42 @@
                     @item.Name
                 </div>
                 <div class="col-md-2">
-                    @item.Part1List
+                    @item.IsHierarchy
                 </div>
-                <div class="col-md-2">
-                    @item.Part2List
+                <div class="col-md-6">
+                    @item.Part1ListName
+                
+                    @if (item.Part2ListName != "EMPTY")
+                    { 
+                        <span>-</span>@item.Part2ListName 
+                    }
+                
+                    @if(item.Part3ListName!="EMPTY")
+                    {
+                        <span>-</span>@item.Part3ListName 
+                    }
+                
+                    @if(item.Part4ListName!="EMPTY")
+                    {
+                        <span>-</span>@item.Part4ListName 
+                    }
+                
+                    @if (item.Part5ListName != "EMPTY")
+                    { 
+                        <span>-</span>@item.Part5ListName 
+                    }
                 </div>
-                <div class="col-md-2">
-                    @item.Part3List
-                </div>
-                <div class="col-md-2">
-                    @item.Part4List
-                </div>
-                <div class="col-md-2">
-                    @item.Part5List
-                </div>
+                | @Ajax.ActionLink("Edit", "Edit", "NumConfig", new {id=item.NumConfigId },
+                    new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "modal-form", InsertionMode = InsertionMode.Replace },
+                    new { data_toggle = "modal", data_target = "#myModal" }) | 
+                @Ajax.ActionLink("Delete", "Delete", "NumConfig", new {id=item.NumConfigId }, 
+                    new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "modal-form", InsertionMode = InsertionMode.Replace }, 
+                    new { data_toggle = "modal", data_target = "#myModal" }) |
             </div>
         </li>
     }
     </ul>
 </div>
+@Ajax.ActionLink("New Num Config", "Create", "NumConfig", null, 
+        new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "modal-form", InsertionMode = InsertionMode.Replace }, 
+        new { data_toggle = "modal", data_target = "#myModal", @class="btn btn-primary" })

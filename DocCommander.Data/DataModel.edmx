@@ -98,11 +98,12 @@
           </Key>
           <Property Name="NumConfigId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="Part1List" Type="int" Nullable="false" />
-          <Property Name="Part2List" Type="int" />
-          <Property Name="Part3List" Type="int" />
-          <Property Name="Part4List" Type="int" />
-          <Property Name="Part5List" Type="int" />
+          <Property Name="IsHierarchy" Type="bit" Nullable="false" />
+          <Property Name="Part1ListName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Part2ListName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Part3ListName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Part4ListName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Part5ListName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="SysList">
           <Key>
@@ -237,20 +238,20 @@
           </AssociationSet>
           <EntitySet Name="SysListItems" EntityType="DocCommanderModel.SysListItem" />
           <EntitySet Name="AppEvents" EntityType="DocCommanderModel.AppEvent" />
-          <EntitySet Name="NumConfigs" EntityType="DocCommanderModel.NumConfig" />
           <AssociationSet Name="FK_AppEvent_Account" Association="DocCommanderModel.FK_AppEvent_Account">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="AppEvent" EntitySet="AppEvents" />
           </AssociationSet>
           <EntitySet Name="Nums" EntityType="DocCommanderModel.Num" />
-          <AssociationSet Name="FK_Num_NumConfig" Association="DocCommanderModel.FK_Num_NumConfig">
-            <End Role="NumConfig" EntitySet="NumConfigs" />
-            <End Role="Num" EntitySet="Nums" />
-          </AssociationSet>
           <EntitySet Name="SysLists" EntityType="DocCommanderModel.SysList" />
           <AssociationSet Name="FK_SysListItem_SysList" Association="DocCommanderModel.FK_SysListItem_SysList">
             <End Role="SysList" EntitySet="SysLists" />
             <End Role="SysListItem" EntitySet="SysListItems" />
+          </AssociationSet>
+          <EntitySet Name="NumConfigs" EntityType="DocCommanderModel.NumConfig" />
+          <AssociationSet Name="FK_Num_NumConfig" Association="DocCommanderModel.FK_Num_NumConfig">
+            <End Role="NumConfig" EntitySet="NumConfigs" />
+            <End Role="Num" EntitySet="Nums" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AccessLevel">
@@ -345,19 +346,6 @@
           <Property Type="String" Name="OldRecordVersion" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="NewRecordVersion" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="NumConfig">
-          <Key>
-            <PropertyRef Name="NumConfigId" />
-          </Key>
-          <Property Type="Int32" Name="NumConfigId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="Part1List" Nullable="false" />
-          <Property Type="Int32" Name="Part2List" />
-          <Property Type="Int32" Name="Part3List" />
-          <Property Type="Int32" Name="Part4List" />
-          <Property Type="Int32" Name="Part5List" />
-          <NavigationProperty Name="Nums" Relationship="DocCommanderModel.FK_Num_NumConfig" FromRole="NumConfig" ToRole="Num" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <Association Name="FK_AppEvent_Account">
           <End Type="DocCommanderModel.Account" Role="Account" Multiplicity="1" />
           <End Type="DocCommanderModel.AppEvent" Role="AppEvent" Multiplicity="*" />
@@ -383,18 +371,6 @@
           <Property Type="String" Name="List5ShortValue" MaxLength="4" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="NumConfig" Relationship="DocCommanderModel.FK_Num_NumConfig" FromRole="Num" ToRole="NumConfig" />
         </EntityType>
-        <Association Name="FK_Num_NumConfig">
-          <End Type="DocCommanderModel.NumConfig" Role="NumConfig" Multiplicity="1" />
-          <End Type="DocCommanderModel.Num" Role="Num" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NumConfig">
-              <PropertyRef Name="NumConfigId" />
-            </Principal>
-            <Dependent Role="Num">
-              <PropertyRef Name="ConfigId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="SysList">
           <Key>
             <PropertyRef Name="SysListId" />
@@ -413,6 +389,32 @@
             </Principal>
             <Dependent Role="SysListItem">
               <PropertyRef Name="SysListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="NumConfig">
+          <Key>
+            <PropertyRef Name="NumConfigId" />
+          </Key>
+          <Property Type="Int32" Name="NumConfigId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsHierarchy" Nullable="false" />
+          <Property Type="String" Name="Part1ListName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Part2ListName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Part3ListName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Part4ListName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Part5ListName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Nums" Relationship="DocCommanderModel.FK_Num_NumConfig" FromRole="NumConfig" ToRole="Num" />
+        </EntityType>
+        <Association Name="FK_Num_NumConfig">
+          <End Type="DocCommanderModel.NumConfig" Role="NumConfig" Multiplicity="1" />
+          <End Type="DocCommanderModel.Num" Role="Num" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NumConfig">
+              <PropertyRef Name="NumConfigId" />
+            </Principal>
+            <Dependent Role="Num">
+              <PropertyRef Name="ConfigId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -519,19 +521,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="NumConfigs">
-            <EntityTypeMapping TypeName="DocCommanderModel.NumConfig">
-              <MappingFragment StoreEntitySet="NumConfig">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Part5List" ColumnName="Part5List" />
-                <ScalarProperty Name="Part4List" ColumnName="Part4List" />
-                <ScalarProperty Name="Part3List" ColumnName="Part3List" />
-                <ScalarProperty Name="Part2List" ColumnName="Part2List" />
-                <ScalarProperty Name="Part1List" ColumnName="Part1List" />
-                <ScalarProperty Name="NumConfigId" ColumnName="NumConfigId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Nums">
             <EntityTypeMapping TypeName="DocCommanderModel.Num">
               <MappingFragment StoreEntitySet="Num">
@@ -551,6 +540,20 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="SysListId" ColumnName="SysListId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NumConfigs">
+            <EntityTypeMapping TypeName="DocCommanderModel.NumConfig">
+              <MappingFragment StoreEntitySet="NumConfig">
+                <ScalarProperty Name="Part5ListName" ColumnName="Part5ListName" />
+                <ScalarProperty Name="Part4ListName" ColumnName="Part4ListName" />
+                <ScalarProperty Name="Part3ListName" ColumnName="Part3ListName" />
+                <ScalarProperty Name="Part2ListName" ColumnName="Part2ListName" />
+                <ScalarProperty Name="Part1ListName" ColumnName="Part1ListName" />
+                <ScalarProperty Name="IsHierarchy" ColumnName="IsHierarchy" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NumConfigId" ColumnName="NumConfigId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
