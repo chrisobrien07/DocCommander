@@ -27,6 +27,11 @@ namespace DocCommander.Data
         public string Part3ListName { get; set; }
         public string Part4ListName { get; set; }
         public string Part5ListName { get; set; }
+        public string Part1String { get; set; }
+        public string Part2String { get; set; }
+        public string Part3String { get; set; }
+        public string Part4String { get; set; }
+        public string Part5String { get; set; }
     
         public virtual ICollection<Num> Nums { get; set; }
     }

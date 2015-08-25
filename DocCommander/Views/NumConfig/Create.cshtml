@@ -10,7 +10,7 @@
     <div class="modal-body" id="modal-body">
     @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
-
+        @Html.HiddenFor(model=>model.NumConfigId)
 
         <div class="form-group">
             @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
@@ -31,7 +31,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Part1ListName, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Part1ListName,(SelectList)ViewBag.ListNames)
+                @Html.DropDownListFor(model => model.Part1ListName, (SelectList)ViewBag.ListNames, new {id="part1-list" })
+                @Html.TextBoxFor(model => model.Part1String, new {id="part1-string" })
                 @Html.ValidationMessageFor(model => model.Part1ListName)
             </div>
         </div>
@@ -39,7 +40,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Part2ListName, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Part2ListName,(SelectList)ViewBag.ListNames)
+                @Html.DropDownListFor(model => model.Part2ListName,(SelectList)ViewBag.ListNames, new {id="part2-list" })
+                @Html.TextBoxFor(model => model.Part1String, new {id="part2-string" })
                 @Html.ValidationMessageFor(model => model.Part2ListName)
             </div>
         </div>
@@ -47,24 +49,28 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Part3ListName, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Part3ListName,(SelectList)ViewBag.ListNames)
+                @Html.DropDownListFor(model => model.Part3ListName,(SelectList)ViewBag.ListNames, new {id="part3-list" })
+                @Html.TextBoxFor(model => model.Part1String, new {id="part3-string" })
                 @Html.ValidationMessageFor(model => model.Part3ListName)
+                
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Part4ListName, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Part4ListName,(SelectList)ViewBag.ListNames)
-                @Html.ValidationMessageFor(model => model.Part4ListName)
+                @Html.DropDownListFor(model => model.Part4ListName,(SelectList)ViewBag.ListNames, new {id="part4-list" })
+                @Html.TextBoxFor(model => model.Part1String, new {id="part4-string" })
+                @Html.ValidationMessageFor(model => model.Part4ListName)                
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Part5ListName, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Part5ListName,(SelectList)ViewBag.ListNames)
-                @Html.ValidationMessageFor(model => model.Part5ListName)
+                @Html.DropDownListFor(model => model.Part5ListName,(SelectList)ViewBag.ListNames, new {id="part5-list" })
+                @Html.TextBoxFor(model => model.Part1String, new {id="part5-string" })
+                @Html.ValidationMessageFor(model => model.Part5ListName)                
             </div>
         </div>
 
@@ -75,3 +81,4 @@
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
     </div>
 }
+

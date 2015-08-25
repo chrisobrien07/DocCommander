@@ -14,26 +14,69 @@
                     @item.IsHierarchy
                 </div>
                 <div class="col-md-6">
-                    @item.Part1ListName
-                
-                    @if (item.Part2ListName != "EMPTY")
-                    { 
-                        <span>-</span>@item.Part2ListName 
+                    @if(item.Part1ListName!="EMPTY")
+                    {
+                        switch (item.Part1ListName)
+                        {
+                            case "STRING":
+                                @item.Part1String;
+                                break;
+                            default:
+                                @item.Part1ListName;
+                                break;
+                        }
+                    }           
+                    
+                    @if(item.Part2ListName!="EMPTY")
+                    {
+                        switch (item.Part2ListName)
+                        {
+                            case "STRING":
+                                @item.Part2String;
+                                break;
+                            default:
+                                <span>- </span>@item.Part2ListName;
+                                break;
+                        }
                     }
-                
+                    
                     @if(item.Part3ListName!="EMPTY")
                     {
-                        <span>-</span>@item.Part3ListName 
+                        switch (item.Part3ListName)
+                        {
+                            case "STRING":
+                                @item.Part3String;
+                                break;
+                            default:
+                                <span>- </span>@item.Part3ListName;
+                                break;
+                        }
                     }
-                
+                    
                     @if(item.Part4ListName!="EMPTY")
                     {
-                        <span>-</span>@item.Part4ListName 
+                        switch (item.Part4ListName)
+                        {
+                            case "STRING":
+                                @item.Part4String;
+                                break;
+                            default:
+                                <span>- </span>@item.Part4ListName;
+                                break;
+                        }
                     }
-                
-                    @if (item.Part5ListName != "EMPTY")
-                    { 
-                        <span>-</span>@item.Part5ListName 
+                    
+                    @if(item.Part5ListName!="EMPTY")
+                    {
+                        switch (item.Part5ListName)
+                        {
+                            case "STRING":
+                                @item.Part5String;
+                                break;
+                            default:
+                                <span>- </span>@item.Part5ListName;
+                                break;
+                        }
                     }
                 </div>
                 | @Ajax.ActionLink("Edit", "Edit", "NumConfig", new {id=item.NumConfigId },

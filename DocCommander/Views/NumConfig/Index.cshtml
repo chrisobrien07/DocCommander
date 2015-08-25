@@ -5,20 +5,46 @@
 <h2>Number Configurations</h2>
 
 <div class="row">
-    
-    
+
+
     <div class="col-md-12" id="numlist">
         @Html.Action("GetList", "NumConfig")
     </div>
 
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content"  id="modal-form">
-      
-      
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" id="modal-form">
+            </div>
         </div>
-      </div>
     </div>
 
 </div>
+
+@section CSS{
+<style>
+    #part1-string,
+    #part2-string,
+    #part3-string,
+    #part4-string,
+    #part5-string {
+        display: none;
+    }
+</style>
+}
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#myModal').on('change','#part1-list', function () {
+                if($('#part1-list').find("option:selected").text()=="STRING"){
+                    $('#part1-string').css({ 'display':'inline-block' });
+                }
+                else
+                {
+                    $('#part1-string').css({ 'display':'none' });
+                }
+            });
+        });
+    </script>
+}

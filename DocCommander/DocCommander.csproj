@@ -359,6 +359,7 @@
     <Compile Include="Controllers\NumConfigController.cs" />
     <Compile Include="Controllers\SysListController.cs" />
     <Compile Include="Controllers\SysListItemController.cs" />
+    <Compile Include="Extensions\ExtensionMethods.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -413,6 +414,7 @@
     <Content Include="Views\NumConfig\Create.cshtml" />
     <Content Include="Views\NumConfig\Edit.cshtml" />
     <Content Include="Views\NumConfig\Delete.cshtml" />
+    <Content Include="Views\Shared\HtmlHelper.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -447,7 +449,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>53791</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:50448/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

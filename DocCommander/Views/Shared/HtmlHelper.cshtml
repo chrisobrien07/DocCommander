@@ -1,0 +1,35 @@
+﻿@model DocCommander.Data.NumConfig
+@using DocCommander.Extensions
+
+@helper NumConfigForm()
+{
+    var name = Model.Part1ListName;
+    if (!Model.IsHierarchy)
+    {
+    <div class="form-group">
+        @Html.Label("Part 1")
+        if (name != "EMPTY")
+        {
+            if (name == "STRING")
+            {
+                @Html.DisplayFor(model => model.Part1String)
+            }
+            else
+            {
+                @Html.DropDownListFor(model => model.Part1ListName, Html.GetSelectList(name))
+            }
+        }
+    </div>
+
+    }
+    else
+    {
+
+    }
+}
+
+@section scripts{
+    <script>
+
+    </script>
+}

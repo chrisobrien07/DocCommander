@@ -17,7 +17,7 @@
         <EntityTypeShape EntityType="DocCommanderModel.Num" Width="1.5" PointX="3" PointY="6" />
         <EntityTypeShape EntityType="DocCommanderModel.SysList" Width="1.5" PointX="5.75" PointY="6" />
         <AssociationConnector Association="DocCommanderModel.FK_SysListItem_SysList" />
-        <EntityTypeShape EntityType="DocCommanderModel.NumConfig" Width="1.5" PointX="0.75" PointY="6" />
+        <EntityTypeShape EntityType="DocCommanderModel.NumConfig" Width="1.5" PointX="0.75" PointY="4.875" />
         <AssociationConnector Association="DocCommanderModel.FK_Num_NumConfig" />
       </Diagram>
     </edmx:Diagrams>

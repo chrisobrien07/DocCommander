@@ -26,6 +26,7 @@ namespace DocCommander.Controllers
         {
             var res = db.SysLists.Where(x => x.IsActive == true).Select(x=>x.Name).ToList();
             res.Insert(0,"EMPTY");
+            res.Insert(1, "STRING");
             ViewBag.ListNames = new SelectList(res);
             return PartialView();
         }
@@ -51,6 +52,7 @@ namespace DocCommander.Controllers
             NumConfig item = db.NumConfigs.Find(id);
             var res = db.SysLists.Where(x => x.IsActive == true).Select(x => x.Name).ToList();
             res.Insert(0, "EMPTY");
+            res.Insert(1, "STRING");
             ViewBag.ListNames = new SelectList(res);
             return PartialView(item);
         }
@@ -90,6 +92,14 @@ namespace DocCommander.Controllers
             db.SaveChanges();
             return RedirectToAction("GetList");
         }
+
+        public SelectList GetSelectList(string listName)
+        {
+            var list = db.SysLists.SingleOrDefault(x => x.Name == listName);
+            var result = new SelectList(db.SysListItems.Where(x=>x.SysListId==list.SysListId).Select(x=>x.ShortCode).ToList());
+            return result;
+        }
+
 
         protected override void Dispose(bool disposing)
         {

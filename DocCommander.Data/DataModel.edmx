@@ -104,6 +104,11 @@
           <Property Name="Part3ListName" Type="nvarchar" MaxLength="50" />
           <Property Name="Part4ListName" Type="nvarchar" MaxLength="50" />
           <Property Name="Part5ListName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Part1String" Type="nvarchar" MaxLength="50" />
+          <Property Name="Part2String" Type="nvarchar" MaxLength="50" />
+          <Property Name="Part3String" Type="nvarchar" MaxLength="50" />
+          <Property Name="Part4String" Type="nvarchar" MaxLength="50" />
+          <Property Name="Part5String" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="SysList">
           <Key>
@@ -404,6 +409,11 @@
           <Property Type="String" Name="Part3ListName" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Part4ListName" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Part5ListName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Part1String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Part2String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Part3String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Part4String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Part5String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Nums" Relationship="DocCommanderModel.FK_Num_NumConfig" FromRole="NumConfig" ToRole="Num" />
         </EntityType>
         <Association Name="FK_Num_NumConfig">
@@ -546,6 +556,11 @@
           <EntitySetMapping Name="NumConfigs">
             <EntityTypeMapping TypeName="DocCommanderModel.NumConfig">
               <MappingFragment StoreEntitySet="NumConfig">
+                <ScalarProperty Name="Part5String" ColumnName="Part5String" />
+                <ScalarProperty Name="Part4String" ColumnName="Part4String" />
+                <ScalarProperty Name="Part3String" ColumnName="Part3String" />
+                <ScalarProperty Name="Part2String" ColumnName="Part2String" />
+                <ScalarProperty Name="Part1String" ColumnName="Part1String" />
                 <ScalarProperty Name="Part5ListName" ColumnName="Part5ListName" />
                 <ScalarProperty Name="Part4ListName" ColumnName="Part4ListName" />
                 <ScalarProperty Name="Part3ListName" ColumnName="Part3ListName" />
