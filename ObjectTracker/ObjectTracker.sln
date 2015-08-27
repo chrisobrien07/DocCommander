@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectTracker", "ObjectTracker.csproj", "{43263AA2-E905-46BE-9C83-C0814542D186}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "..\Data\Data.csproj", "{254CD3B4-5887-4F60-A85F-5BE3D989E8CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43263AA2-E905-46BE-9C83-C0814542D186}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43263AA2-E905-46BE-9C83-C0814542D186}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43263AA2-E905-46BE-9C83-C0814542D186}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43263AA2-E905-46BE-9C83-C0814542D186}.Release|Any CPU.Build.0 = Release|Any CPU
+		{254CD3B4-5887-4F60-A85F-5BE3D989E8CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{254CD3B4-5887-4F60-A85F-5BE3D989E8CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{254CD3B4-5887-4F60-A85F-5BE3D989E8CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{254CD3B4-5887-4F60-A85F-5BE3D989E8CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
